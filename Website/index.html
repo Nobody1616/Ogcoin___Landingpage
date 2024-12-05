@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGCoin – Fortnite OG Season</title>
+    <style>
+        /* Allgemeine Stile */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            background: #1a1a2e;
+        }
+
+        /* Header */
+        header {
+            background: rgba(18, 60, 105, 0.9); /* Dunkelblau mit Transparenz */
+            padding: 20px;
+        }
+        header h1 {
+            font-size: 4.5em;
+            margin: 0;
+            text-shadow: 3px 3px #000;
+        }
+        header p {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        /* Countdown */
+        .countdown-container {
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            margin: 20px auto;
+            border-radius: 15px;
+            max-width: 900px;
+        }
+        .countdown {
+            font-size: 4em; /* Countdown größer */
+            color: #28a745;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #ff007f;
+        }
+
+        /* Hauptbereiche */
+        .hero, .image-container {
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            margin: 20px auto;
+            border-radius: 15px;
+            max-width: 900px;
+        }
+        .hero h2, .image-container h2 {
+            font-size: 2.5em;
+            color: #28a745;
+        }
+        .hero p, .image-container p {
+            font-size: 1.2em;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background: #28a745;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #17a2b8;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(18, 60, 105, 0.9);
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>OGCoin</h1>
+        <p>The meme coin celebrating Fortnite's OG Season!</p>
+    </header>
+
+    <!-- Countdown -->
+    <section class="countdown-container">
+        <h2>Countdown to Launch</h2>
+        <div class="countdown" id="countdown"></div>
+        <div class="message" id="message"></div>
+    </section>
+
+    <!-- Hauptinhalt -->
+    <section class="hero">
+        <h2>Why OGCoin?</h2>
+        <p>Relive the nostalgia, fun, and true OG vibes with the coin that captures the hype.</p>
+        <a href="#how-to-buy" class="btn">How to Buy</a>
+        <a href="#tokenomics" class="btn">Tokenomics</a>
+    </section>
+
+    <!-- Bildbereich -->
+    <section class="image-container">
+        <h2>The OG season is back and we have to celebrate it</h2>
+        <img src="map.png" alt="Fortnite OG Season Map" width="80%">
+    </section>
+
+    <!-- Kaufanleitung -->
+    <section id="how-to-buy" class="hero">
+        <h2>How to Buy OGCoin</h2>
+        <p>1. Connect your wallet (e.g., MetaMask) to Binance Smart Chain.<br>
+           2. Visit PancakeSwap.<br>
+           3. Swap BNB for OGCoin.</p>
+    </section>
+
+    <!-- Tokenomics -->
+    <section id="tokenomics" class="hero">
+        <h2>Tokenomics</h2>
+        <p>Total Supply: 1,000,000,000 OGCoin<br>
+           2% transaction fee (for burning & marketing)</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 OGCoin. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Zielzeit einstellen: 6. Dezember um 12:00 Uhr
+        const targetDate = new Date('December 6, 2024 12:00:00').getTime();
+
+        // Countdown-Update alle 1 Sekunde
+        const interval = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            // Zeit in Tage, Stunden, Minuten und Sekunden umrechnen
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Countdown anzeigen
+            document.getElementById('countdown').innerHTML = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // Wenn der Countdown vorbei ist
+            if (timeLeft <= 0) {
+                clearInterval(interval);
+                document.getElementById('countdown').innerHTML = "00d 00h 00m 00s";
+                document.getElementById('message').innerHTML = "The countdown is over! 🎉";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
